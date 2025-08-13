@@ -55,8 +55,18 @@ nums.forEach((num) => {
 const ops = document.querySelectorAll(".oper");
 ops.forEach((op) => {
     op.addEventListener("click", () => {
-        oper = op.textContent;
-        display.textContent = num1+' '+oper+' '+num2;
+        if (num1 !== '' && num2 !== '') {
+            operate(num1,num2,oper);
+            num1 = result;
+            num2 = '';
+            oper = op.textContent;
+            display.textContent = num1+' '+oper+' '+num2;
+        }
+        else {
+            oper = op.textContent;
+            display.textContent = num1+' '+oper+' '+num2;
+        }
+
     })
 });
 //Make the calculator work after pressing '='
@@ -64,7 +74,7 @@ const equal = document.querySelector(".equal");
 equal.addEventListener("click", ()=> {
     operate(num1,num2,oper);
     display.textContent = '= '+result;
-    num1 = '';
+    num1 = result;
     num2 = '';
     oper = '';
 });
