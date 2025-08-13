@@ -42,13 +42,13 @@ let display = document.querySelector(".display");
 const nums = document.querySelectorAll(".num");
 nums.forEach((num) => {
     num.addEventListener("click", () => {
-        display.textContent += num.textContent;
         if (oper === '') {
             num1 += num.textContent;
         }
         else {
             num2 += num.textContent;
         };
+        display.textContent = num1+' '+oper+' '+num2;
     })
 });
 
@@ -56,7 +56,7 @@ const ops = document.querySelectorAll(".oper");
 ops.forEach((op) => {
     op.addEventListener("click", () => {
         oper = op.textContent;
-        display.textContent = display.textContent+' '+oper+' ';
+        display.textContent = num1+' '+oper+' '+num2;
     })
 });
 //Make the calculator work after pressing '='
