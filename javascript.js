@@ -19,7 +19,7 @@ let num1='';
 let num2='';
 let oper='';
 // new function operate that takes an operator and two numbers and then calls one of the above functions on the numbers.
-let result;
+let result=0;
 function operate (x1,x2,operator) {   
     if (operator === "+") {
         result = add(x1,x2)
@@ -82,15 +82,27 @@ ops.forEach((op) => {
 //Make the calculator work after pressing '='
 let equal = document.querySelector(".equal");
 equal.addEventListener("click", ()=> {
+    if (num1 === '' && num2 === '' && oper === '') {
+        display.textContent = '0';
+    }
+    else if (num1 !== '' && num2 === '' && oper === '') {
+        display.textContent = num1;
+    }
+    else if (num1 !== '' && num2 === '' && oper !== '') {
+        display.textContent = num1;
+    }
+    else {
     operate(num1,num2,oper);
     num1 = '';
     num2 = '';
     oper = '';
-    display.textContent = '= '+result
+    display.textContent = result;
+    };
 });
 
+// J'ai réglé un problème (quand on clique '=' avant fin operation),
+// mais recréé un autre (après '=', quand on clique sur un opérateur,
+// le compteur retourne à zero, au lieu de continuer).
 
-
-
-//ET aussi, si on clique sur 2 opérateurs (ou le même) de suite,
-//que seul le 2eme aparaisse (au lieu d'avoir +-) et =operator
+// pour le '0', il faudra changer le fait que quand on y clique
+//plusieurs fois alors que l'écran affiche déjà zéro, on a plusieurs zéros.
