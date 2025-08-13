@@ -58,13 +58,16 @@ ops.forEach((op) => {
         oper = op.textContent;
         display.textContent = display.textContent+' '+oper+' ';
     })
-})
+});
 //Make the calculator work after pressing '='
 const equal = document.querySelector(".equal");
 equal.addEventListener("click", ()=> {
     operate(num1,num2,oper);
     display.textContent = '= '+result;
-})
+    num1 = '';
+    num2 = '';
+    oper = '';
+});
 
 
 
