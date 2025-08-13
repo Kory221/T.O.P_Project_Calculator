@@ -62,8 +62,13 @@ ops.forEach((op) => {
             oper = op.textContent;
             display.textContent = num1+' '+oper+' '+num2;
         }
-        else if (num1 === '' && num2 === '') {
+        else if (num1 === '' && num2 === '' && display.textContent !== '= '+result) {
             num1 = '0';
+            oper = op.textContent;
+            display.textContent = num1+' '+oper+' '+num2;
+        }
+        else if (num1 === '' && num2 === '' && display.textContent === '= '+result) {
+            num1 = result;
             oper = op.textContent;
             display.textContent = num1+' '+oper+' '+num2;
         }
@@ -75,13 +80,13 @@ ops.forEach((op) => {
     })
 });
 //Make the calculator work after pressing '='
-const equal = document.querySelector(".equal");
+let equal = document.querySelector(".equal");
 equal.addEventListener("click", ()=> {
     operate(num1,num2,oper);
-    display.textContent = '= '+result;
-    num1 = result;
+    num1 = '';
     num2 = '';
     oper = '';
+    display.textContent = '= '+result
 });
 
 
