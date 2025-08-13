@@ -19,9 +19,8 @@ let num1='';
 let num2='';
 let oper='';
 // new function operate that takes an operator and two numbers and then calls one of the above functions on the numbers.
-
-function operate (x1,x2,operator) {
-    let result;
+let result;
+function operate (x1,x2,operator) {   
     if (operator === "+") {
         result = add(x1,x2)
     }
@@ -38,7 +37,7 @@ function operate (x1,x2,operator) {
 }
 //create the functions that populate the display when you click the digit buttons
 
-const display = document.querySelector(".display");
+let display = document.querySelector(".display");
 
 const nums = document.querySelectorAll(".num");
 nums.forEach((num) => {
@@ -60,11 +59,15 @@ ops.forEach((op) => {
         display.textContent = display.textContent+' '+oper+' ';
     })
 })
+//Make the calculator work after pressing '='
+const equal = document.querySelector(".equal");
+equal.addEventListener("click", ()=> {
+    operate(num1,num2,oper);
+    display.textContent = '= '+result;
+})
 
-// l'idée est que si on clique sur un opérateur, le premier
-//eventlistener sur les nums s'arrête et un autre 
-//commence faisant la même chose mais remplissant
-//cette fois num2.
+
+
 
 //ET aussi, si on clique sur 2 opérateurs (ou le même) de suite,
 //que seul le 2eme aparaisse (au lieu d'avoir +-) et =operator
