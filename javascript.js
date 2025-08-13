@@ -17,22 +17,22 @@ function divide (a,b) {
 // 3 variable for operands and operator
 let num1='';
 let num2='';
-let operator='';
+let oper='';
 // new function operate that takes an operator and two numbers and then calls one of the above functions on the numbers.
 
-function operate (num1,num2,operator) {
+function operate (x1,x2,operator) {
     let result;
     if (operator === "+") {
-        result = add(num1,num2)
+        result = add(x1,x2)
     }
     else if (operator === "-") {
-        result = subtract(num1,num2)
+        result = subtract(x1,x2)
     }
     else if (operator === "*") {
-        result = multiply(num1,num2)
+        result = multiply(x1,x2)
     }
     else if (operator === "/") {
-        result = divide(num1,num2)
+        result = divide(x1,x2)
     };
     return result;
 }
@@ -44,15 +44,20 @@ const nums = document.querySelectorAll(".num");
 nums.forEach((num) => {
     num.addEventListener("click", () => {
         display.textContent += num.textContent;
-        num1 += num.textContent;
+        if (oper === '') {
+            num1 += num.textContent;
+        }
+        else {
+            num2 += num.textContent;
+        };
     })
 });
 
-const opers = document.querySelectorAll(".oper");
-opers.forEach((oper) => {
-    oper.addEventListener("click", () => {
-        operator = oper.textContent;
-        display.textContent = display.textContent+' '+oper.textContent+' ';
+const ops = document.querySelectorAll(".oper");
+ops.forEach((op) => {
+    op.addEventListener("click", () => {
+        oper = op.textContent;
+        display.textContent = display.textContent+' '+oper+' ';
     })
 })
 
