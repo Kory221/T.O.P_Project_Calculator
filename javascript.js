@@ -62,6 +62,11 @@ ops.forEach((op) => {
             oper = op.textContent;
             display.textContent = num1+' '+oper+' '+num2;
         }
+        else if (num1 === '' && num2 === '') {
+            num1 = '0';
+            oper = op.textContent;
+            display.textContent = num1+' '+oper+' '+num2;
+        }
         else {
             oper = op.textContent;
             display.textContent = num1+' '+oper+' '+num2;
