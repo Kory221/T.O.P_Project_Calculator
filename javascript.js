@@ -138,7 +138,28 @@ clear.addEventListener("click", ()=> {
     num2 = '';
     oper = '';
     display.textContent = '0';
-})
+});
 
-// pour le '0', il faudra changer le fait que quand on y clique
-//plusieurs fois alors que l'écran affiche déjà zéro, on a plusieurs zéros.
+//Add a “backspace” button, so the user can undo their last input if they click the wrong number.
+const backsp = document.querySelector(".bsp");
+backsp.addEventListener("click", () => {
+    if (num1!=='' && oper ==='' && num2 === '') {
+        num1 = num1.slice(0,-1);
+        display.textContent = Number(num1);
+    }
+    else if (num1!== '' && oper !=='' && num2==='') {
+        oper = oper.slice(0,-1);
+        display.textContent = Number(num1);
+    }
+    else if (num1!=='' && oper !== '' && num2 !== '') {
+        if (num2.length > 1) {
+            num2 = num2.slice(0,-1);
+        display.textContent = Number(num1)+' '+oper+' '+Number(num2);
+        }
+        else {
+            num2 = num2.slice(0,-1);
+        display.textContent = Number(num1)+' '+oper;
+        }
+
+    }
+})
