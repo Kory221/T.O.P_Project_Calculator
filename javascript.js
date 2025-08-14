@@ -143,7 +143,7 @@ clear.addEventListener("click", ()=> {
 //Add a “backspace” button, so the user can undo their last input if they click the wrong number.
 const backsp = document.querySelector(".bsp");
 backsp.addEventListener("click", () => {
-    if (num1!=='' && oper ==='' && num2 === '') {
+    if (num1!=='' && typeof num1 === 'string' && oper ==='' && num2 === '') {
         num1 = num1.slice(0,-1);
         display.textContent = Number(num1);
     }
@@ -151,7 +151,7 @@ backsp.addEventListener("click", () => {
         oper = oper.slice(0,-1);
         display.textContent = Number(num1);
     }
-    else if (num1!=='' && oper !== '' && num2 !== '') {
+    else if (num1!=='' && oper !== '' && num2 !== '' && typeof num2 === 'string') {
         if (num2.length > 1) {
             num2 = num2.slice(0,-1);
         display.textContent = Number(num1)+' '+oper+' '+Number(num2);
