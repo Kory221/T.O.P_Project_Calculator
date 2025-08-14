@@ -22,16 +22,16 @@ let oper='';
 let result=0;
 function operate (x1,x2,operator) {   
     if (operator === "+") {
-        result = add(x1,x2)
+        result = Number(add(x1,x2).toFixed(10));
     }
     else if (operator === "-") {
-        result = subtract(x1,x2)
+        result = Number(subtract(x1,x2).toFixed(10));
     }
     else if (operator === "*") {
-        result = multiply(x1,x2)
+        result = Number(multiply(x1,x2).toFixed(10));
     }
     else if (operator === "/") {
-        result = divide(x1,x2)
+        result = Number(divide(x1,x2).toFixed(10));
     };
     return result;
 }
@@ -100,9 +100,7 @@ equal.addEventListener("click", ()=> {
     };
 });
 
-// J'ai réglé un problème (quand on clique '=' avant fin operation),
-// mais recréé un autre (après '=', quand on clique sur un opérateur,
-// le compteur retourne à zero, au lieu de continuer).
+
 
 // pour le '0', il faudra changer le fait que quand on y clique
 //plusieurs fois alors que l'écran affiche déjà zéro, on a plusieurs zéros.
