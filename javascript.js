@@ -38,19 +38,41 @@ function operate (x1,x2,operator) {
 //create the functions that populate the display when you click the digit buttons
 
 let display = document.querySelector(".display");
+display.textContent = '0';
 
 const nums = document.querySelectorAll(".num");
 nums.forEach((num) => {
     num.addEventListener("click", () => {
         if (oper === '') {
             num1 += num.textContent;
+            display.textContent = Number(num1);
         }
         else {
             num2 += num.textContent;
+            display.textContent = Number(num1)+' '+oper+' '+Number(num2);
         };
-        display.textContent = num1+' '+oper+' '+num2;
+        
     })
 });
+//Add a . button and let users input decimals!
+const float = document.querySelector(".float");
+float.addEventListener ("click", () => {
+    
+    if (oper === '' && !num1.includes('.')) {
+        if (num1 === '') {
+            num1 ='0';
+        }
+        num1 += float.textContent;
+        display.textContent = Number(num1)+'.';
+    }
+    else if (oper !== '' && !num2.includes('.')) {
+        if (num2 === '') {
+            num2 ='0';
+        }
+        num2 += float.textContent;
+        display.textContent = Number(num1)+' '+oper+' '+Number(num2)+'.';
+    };
+})
 
 const ops = document.querySelectorAll(".oper");
 ops.forEach((op) => {
@@ -58,26 +80,30 @@ ops.forEach((op) => {
         if (num2 === '0' && oper === '/') {
             alert("Impossible to divide by 0")
         }
+        else if (num1 !== '' && num2 === '') {
+            oper = op.textContent;
+            display.textContent = Number(num1)+' '+oper;
+        }
         else if (num1 !== '' && num2 !== '') {
             operate(num1,num2,oper);
             num1 = result;
             num2 = '';
             oper = op.textContent;
-            display.textContent = num1+' '+oper+' '+num2;
+            display.textContent = Number(num1)+' '+oper;
         }
         else if (num1 === '' && num2 === '' && display.textContent != result) {
             num1 = '0';
             oper = op.textContent;
-            display.textContent = num1+' '+oper+' '+num2;
+            display.textContent = Number(num1)+' '+oper;
         }
         else if (num1 === '' && num2 === '' && display.textContent == result) {
             num1 = result;
             oper = op.textContent;
-            display.textContent = num1+' '+oper+' '+num2;
+            display.textContent = Number(num1)+' '+oper;
         }
         else {
             oper = op.textContent;
-            display.textContent = num1+' '+oper+' '+num2;
+            display.textContent = Number(num1)+' '+oper+' '+Number(num2);
         }
 
     })
@@ -89,13 +115,13 @@ equal.addEventListener("click", ()=> {
         alert("Impossible to divide by 0")
     }
     else if (num1 === '' && num2 === '' && oper === '') {
-        display.textContent = '0';
+        display.textContent = 0;
     }
     else if (num1 !== '' && num2 === '' && oper === '') {
-        display.textContent = num1;
+        display.textContent = Number(num1);
     }
     else if (num1 !== '' && num2 === '' && oper !== '') {
-        display.textContent = num1;
+        display.textContent = Number(num1)+' '+oper;
     }
     else {
     operate(num1,num2,oper);
@@ -111,7 +137,7 @@ clear.addEventListener("click", ()=> {
     num1 = '';
     num2 = '';
     oper = '';
-    display.textContent = '';
+    display.textContent = '0';
 })
 
 // pour le '0', il faudra changer le fait que quand on y clique
