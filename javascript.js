@@ -43,11 +43,11 @@ display.textContent = '0';
 const nums = document.querySelectorAll(".num");
 nums.forEach((num) => {
     num.addEventListener("click", () => {
-        if (oper === '') {
+        if (oper === '' && num1 !== result) {
             num1 += num.textContent;
             display.textContent = Number(num1);
         }
-        else {
+        else if (oper !=='') {
             num2 += num.textContent;
             display.textContent = Number(num1)+' '+oper+' '+Number(num2);
         };
