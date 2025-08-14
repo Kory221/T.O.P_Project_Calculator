@@ -55,7 +55,10 @@ nums.forEach((num) => {
 const ops = document.querySelectorAll(".oper");
 ops.forEach((op) => {
     op.addEventListener("click", () => {
-        if (num1 !== '' && num2 !== '') {
+        if (num2 === '0' && oper === '/') {
+            alert("Impossible to divide by 0")
+        }
+        else if (num1 !== '' && num2 !== '') {
             operate(num1,num2,oper);
             num1 = result;
             num2 = '';
@@ -82,7 +85,10 @@ ops.forEach((op) => {
 //Make the calculator work after pressing '='
 let equal = document.querySelector(".equal");
 equal.addEventListener("click", ()=> {
-    if (num1 === '' && num2 === '' && oper === '') {
+    if (num2 === '0' && oper === '/') {
+        alert("Impossible to divide by 0")
+    }
+    else if (num1 === '' && num2 === '' && oper === '') {
         display.textContent = '0';
     }
     else if (num1 !== '' && num2 === '' && oper === '') {
@@ -99,8 +105,14 @@ equal.addEventListener("click", ()=> {
     display.textContent = result;
     };
 });
-
-
+//Pressing “clear” should wipe out any existing data.
+const clear = document.querySelector(".clear");
+clear.addEventListener("click", ()=> {
+    num1 = '';
+    num2 = '';
+    oper = '';
+    display.textContent = '';
+})
 
 // pour le '0', il faudra changer le fait que quand on y clique
 //plusieurs fois alors que l'écran affiche déjà zéro, on a plusieurs zéros.
