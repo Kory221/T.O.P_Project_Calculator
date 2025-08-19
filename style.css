@@ -1,3 +1,18 @@
 .display {
     border:black solid 1px;
+    height: 40px;
+}
+
+.calc {
+    width: 300px;
+    height : 400px;
+    padding : 10px;
+    border : black solid 1px;
+}
+
+.num {
+    background-color : rgb(221, 212, 212)
+}
+.btns button {
+    height : 50px;
 }
