@@ -195,7 +195,166 @@ backsp.addEventListener("click", () => {
         else {
             num2 = num2.slice(0,-1);
         display.textContent = Number(num1)+' '+oper;
-        }
+        };
 
+    };
+});
+
+// Add keyboard support
+let keyNums = ['0','1','2','3','4','5','6','7','8','9'];
+
+document.addEventListener("keyup", (keynum) => {
+    if (keyNums.includes(keynum.key)){
+        if (oper === '' && num1 !== result) {
+            if (num1.includes('.')){
+                num1 += keynum.key;
+                integ1 = num1.slice(0,num1.indexOf('.'));
+                decim1 = num1.slice(num1.indexOf('.'));
+                display.textContent = Number(integ1)+decim1;
+            }
+            else {
+            num1 += keynum.key;
+            display.textContent = Number(num1);
+            }
+        }
+        else if (oper !=='') {
+            if (num2.includes('.')) {
+                num2 += keynum.key;
+                integ2 = num2.slice(0,num2.indexOf('.'));
+                decim2 = num2.slice(num2.indexOf('.'));
+                display.textContent = Number(num1)+' '+oper+' '+Number(integ2)+decim2;
+            }
+            else {
+            num2 += keynum.key;
+            display.textContent = Number(num1)+' '+oper+' '+Number(num2);
+            }
+        };
+
+    }
+});
+
+document.addEventListener("keyup", (keyFloat) => {
+    if (keyFloat.key === '.') {
+        if (oper === '' && !num1.includes('.')) {
+            if (num1 === '') {
+                num1 ='0';
+            }
+            num1 += float.textContent;
+            display.textContent = Number(num1)+'.';
+        }
+        else if (oper !== '' && !num2.includes('.')) {
+            if (num2 === '') {
+                num2 ='0';
+            }
+            num2 += float.textContent;
+            display.textContent = Number(num1)+' '+oper+' '+Number(num2)+'.';
+        };
+    }
+})
+
+let keyOps = ['+','-','*','/']
+document.addEventListener("keyup", (keyOp) => {
+    if (keyOps.includes(keyOp.key)) {
+        if (num2 === '0' && oper === '/') {
+            alert("Impossible to divide by 0")
+        }
+        else if (num1 !== '' && num2 === '') {
+            oper = keyOp.key;
+            display.textContent = Number(num1)+' '+oper;
+        }
+        else if (num1 !== '' && num2 !== '') {
+            operate(num1,num2,oper);
+            num1 = result;
+            num2 = '';
+            oper = keyOp.key;
+            display.textContent = Number(num1)+' '+oper;
+        }
+        else if (num1 === '' && num2 === '' && display.textContent != result) {
+            num1 = '0';
+            oper = keyOp.key;
+            display.textContent = Number(num1)+' '+oper;
+        }
+        else if (num1 === '' && num2 === '' && display.textContent == result) {
+            num1 = result;
+            oper = keyOp.key;
+            display.textContent = Number(num1)+' '+oper;
+        }
+        else {
+            oper = keyOp.key;
+            display.textContent = Number(num1)+' '+oper+' '+Number(num2);
+        };
+    };
+});
+
+document.addEventListener("keyup", (keyEq) => {
+    if (keyEq.key === 'Enter') {
+        if (num2 === '0' && oper === '/') {
+            alert("Impossible to divide by 0")
+        }
+        else if (num1 === '' && num2 === '' && oper === '') {
+            display.textContent = 0;
+        }
+        else if (num1 !== '' && num2 === '' && oper === '') {
+            display.textContent = Number(num1);
+        }
+        else if (num1 !== '' && num2 === '' && oper !== '') {
+            display.textContent = Number(num1)+' '+oper;
+        }
+        else {
+        operate(num1,num2,oper);
+        num1 = '';
+        num2 = '';
+        oper = '';
+        display.textContent = result;
+        };
+    }
+});
+
+document.addEventListener("keyup", (clear) => {
+    if (clear.key === "c") {
+    num1 = '';
+    num2 = '';
+    oper = '';
+    display.textContent = '0';
+    };
+});
+
+document.addEventListener("keydown", (keyBsp) => {
+    if (keyBsp.key === "Backspace") {
+        if (num1!=='' && typeof num1 === 'string' && oper ==='' && num2 === '') {
+            if (num1.includes('.') && num1.length>num1.indexOf('.')+1) {
+                num1 = num1.slice(0,-1);
+                integ1 = num1.slice(0,num1.indexOf('.'));
+                decim1 = num1.slice(num1.indexOf('.'));
+                display.textContent = Number(integ1)+decim1;
+            }
+            else {
+                num1 = num1.slice(0,-1);
+                display.textContent = Number(num1);
+            }
+        }
+        else if (num1!== '' && oper !=='' && num2==='') {
+            oper = oper.slice(0,-1);
+            display.textContent = Number(num1);
+        }
+        else if (num1!=='' && oper !== '' && num2 !== '' && typeof num2 === 'string') {
+            if (num2.length > 1) {
+                if (num2.includes('.') & num2.length>num2.indexOf('.')+1) {
+                num2 = num2.slice(0,-1);
+                integ2 = num2.slice(0,num2.indexOf('.'));
+                decim2 = num2.slice(num2.indexOf('.'));
+                display.textContent = Number(num1)+' '+oper+' '+Number(integ2)+decim2;  
+                }
+                else {
+                num2 = num2.slice(0,-1);
+                display.textContent = Number(num1)+' '+oper+' '+Number(num2);
+                }
+            }
+            else {
+                num2 = num2.slice(0,-1);
+            display.textContent = Number(num1)+' '+oper;
+            };
+    
+        };
     }
 })
