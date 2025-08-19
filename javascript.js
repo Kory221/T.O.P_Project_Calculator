@@ -157,10 +157,6 @@ clear.addEventListener("click", ()=> {
     num1 = '';
     num2 = '';
     oper = '';
-    integ1 = '';
-    decim1 = '';
-    integ2 = '';
-    decim2 = '';
     display.textContent = '0';
 });
 
