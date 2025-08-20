@@ -135,7 +135,12 @@ equal.addEventListener("click", ()=> {
         alert("Impossible to divide by 0")
     }
     else if (num1 === '' && num2 === '' && oper === '') {
+        if (display.textContent == result) {
+            display.textContent = result;
+        }
+    else {
         display.textContent = 0;
+        };
     }
     else if (num1 !== '' && num2 === '' && oper === '') {
         display.textContent = Number(num1);
@@ -292,7 +297,12 @@ document.addEventListener("keyup", (keyEq) => {
             alert("Impossible to divide by 0")
         }
         else if (num1 === '' && num2 === '' && oper === '') {
+            if (display.textContent == result) {
+                display.textContent = result;
+            }
+        else {
             display.textContent = 0;
+            };
         }
         else if (num1 !== '' && num2 === '' && oper === '') {
             display.textContent = Number(num1);
