@@ -311,7 +311,7 @@ document.addEventListener("keyup", (keyEq) => {
 });
 
 document.addEventListener("keyup", (clear) => {
-    if (clear.key === "c") {
+    if (clear.key === "Delete") {
     num1 = '';
     num2 = '';
     oper = '';
@@ -356,5 +356,5 @@ document.addEventListener("keydown", (keyBsp) => {
             };
     
         };
-    }
-})
+    };
+});
