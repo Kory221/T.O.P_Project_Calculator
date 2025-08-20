@@ -4,8 +4,9 @@
     margin-bottom: 10px;
     font-size: 30px;
     text-align: end;
-    text-overflow: clip;
     background-color: white;
+    overflow :hidden;
+    text-overflow: clip;
 }
 
 .calc {
