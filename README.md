@@ -11,6 +11,17 @@ In this project, we’re going to make an on-screen calculator using JavaScript,
 3- Create a new function called operate that takes an operator and two numbers 
 and then calls one of the above functions on the numbers.
 
+4- Create a basic HTML calculator with buttons for each digit and operator (including =).
+
+5- Create the functions that populate the display when you click the digit buttons.
+
+6- Make the calculator work!
+
+Extra credit :
+
+1- Add a . button and let users input decimals! 
+2- Add a “backspace” button, so the user can undo their last input if they click the wrong number.
+3- Add keyboard support!
 
 Link to the project on THE ODIN PROJECT website
 https://www.theodinproject.com/lessons/foundations-calculator
