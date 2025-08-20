@@ -1,6 +1,11 @@
+* {
+    box-sizing: border-box;
+}
+
 .display {
     border:black solid 1px;
-    height: 40px;
+    height: 42px;
+    width : 260px;
     margin-bottom: 10px;
     font-size: 30px;
     text-align: end;
@@ -10,11 +15,18 @@
 }
 
 .calc {
-    width: 260px;
-    height : 360px;
+    width: 282px;
+    height : 382px;
     padding : 10px;
     border : black solid 1px;
     background-color: rgb(228, 228, 228);
+}
+
+.btns button {
+    height : 60px;
+    width : 60px;
+    margin : 1px;
+    border-radius: 10%;
 }
 
 .num {
@@ -37,13 +49,6 @@
     background-color: rgb(153, 150, 150);
     color : black;
     font-weight:bold ;
-}
-
-.btns button {
-    height : 60px;
-    width : 60px;
-    margin : 1px;
-    border-radius: 10%;
 }
 
 body {
